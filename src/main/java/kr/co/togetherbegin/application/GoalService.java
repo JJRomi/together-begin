@@ -54,4 +54,9 @@ public class GoalService {
 
         return goalResponseDto;
     }
+
+    public void deleteGoal(Long goalId) {
+        Goal goal = goalRepository.findById(goalId);
+        goalRepository.delete(goal);
+    }
 }

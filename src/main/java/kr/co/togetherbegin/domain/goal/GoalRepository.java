@@ -9,4 +9,6 @@ public interface GoalRepository {
     List<Goal> findByCategory(String category);
 
     Goal findById(Long goalId);
+
+    void delete(Goal goal);
 }

@@ -3,8 +3,6 @@ package kr.co.togetherbegin.infrastructure;
 import kr.co.togetherbegin.domain.exception.EntityNotFoundException;
 import kr.co.togetherbegin.domain.goal.Goal;
 import kr.co.togetherbegin.domain.goal.GoalRepository;
-import kr.co.togetherbegin.presentation.dto.GoalRequestDto;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -39,5 +37,10 @@ public class ListGoalRepository implements GoalRepository {
                 .filter(goal -> goal.sameId(id))
                 .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException("목표를 찾지 못했습니다."));
+    }
+
+    @Override
+    public void delete(Goal goal) {
+        goals.remove(goal);
     }
 }

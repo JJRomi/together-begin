@@ -57,8 +57,8 @@ public class GoalRestController {
     }
 
     @RequestMapping(value = "/api/v1/goals/{goalId}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> cancelGoalById() {
-        return ResponseEntity.ok(null);
+    public void deleteGoalById(@PathVariable Long goalId) {
+        goalService.deleteGoal(goalId);
     }
 
 }
