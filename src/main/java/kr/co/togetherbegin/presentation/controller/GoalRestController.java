@@ -5,10 +5,9 @@ import kr.co.togetherbegin.presentation.dto.GoalRequestDto;
 import kr.co.togetherbegin.presentation.dto.GoalResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class GoalRestController {
@@ -30,8 +29,12 @@ public class GoalRestController {
     }
 
     @RequestMapping(value = "/api/v1/goals", method = RequestMethod.GET)
-    public ResponseEntity<?> getGoalsByState() {
-        return ResponseEntity.ok(null);
+    public ResponseEntity<List<GoalResponseDto>> getGoalsByCategory(
+            @RequestParam(required = false) String category
+    ) {
+        List<GoalResponseDto> goalResponseDtos = goalService.findByCategory(category);
+
+        return ResponseEntity.ok(goalResponseDtos);
     }
 
     @RequestMapping(value = "/api/v1/goals/{goalId}", method = RequestMethod.GET)

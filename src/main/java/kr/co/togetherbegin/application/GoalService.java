@@ -7,6 +7,8 @@ import kr.co.togetherbegin.presentation.dto.GoalResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GoalService {
 
@@ -15,6 +17,18 @@ public class GoalService {
     @Autowired
     public GoalService(GoalRepository goalRepository) {
         this.goalRepository = goalRepository;
+    }
+
+    public List<GoalResponseDto> findByCategory(String category) {
+        List<Goal> goals = goalRepository.findByCategory(category);
+
+        List<GoalResponseDto> goalResponseDtos = goals
+                .stream()
+                .map(goal -> GoalResponseDto.toDto(goal))
+                .toList();
+
+        return goalResponseDtos;
+
     }
 
     public GoalResponseDto createGoal(GoalRequestDto goalRequestDto) {

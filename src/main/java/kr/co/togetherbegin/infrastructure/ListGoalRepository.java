@@ -25,4 +25,10 @@ public class ListGoalRepository implements GoalRepository {
         return goal;
     }
 
+    @Override
+    public List<Goal> findByCategory(String category) {
+        return goals.stream()
+                .filter(goal -> category == null || goal.sameCategory(category))
+                .toList();
+    }
 }

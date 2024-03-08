@@ -62,4 +62,8 @@ public class Goal {
     public Date getUpdatedAt() {
         return updatedAt;
     }
+
+    public boolean sameCategory(String category) {
+        return this.category.equals(category);
+    }
 }
