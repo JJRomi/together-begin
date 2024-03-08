@@ -45,4 +45,13 @@ public class GoalService {
 
         return goalResponseDto;
     }
+
+    public GoalResponseDto changeGoal(Long goalId, GoalRequestDto goalRequestDto) {
+        Goal goal = goalRepository.findById(goalId);
+        goal.changeGoalForce(goalRequestDto);
+
+        GoalResponseDto goalResponseDto = GoalResponseDto.toDto(goal);
+
+        return goalResponseDto;
+    }
 }

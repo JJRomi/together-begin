@@ -47,8 +47,13 @@ public class GoalRestController {
     }
 
     @RequestMapping(value = "/api/v1/goals/{goalId}", method = RequestMethod.PATCH)
-    public ResponseEntity<?> changeGoal() {
-        return ResponseEntity.ok(null);
+    public ResponseEntity<GoalResponseDto> changeGoal(
+            @PathVariable Long goalId,
+            @RequestBody GoalRequestDto goalRequestDto
+    ) {
+        GoalResponseDto goalResponseDto = goalService.changeGoal(goalId, goalRequestDto);
+
+        return ResponseEntity.ok(goalResponseDto);
     }
 
     @RequestMapping(value = "/api/v1/goals/{goalId}", method = RequestMethod.DELETE)

@@ -1,5 +1,6 @@
 package kr.co.togetherbegin.domain.goal;
 
+import kr.co.togetherbegin.presentation.dto.GoalRequestDto;
 import lombok.Builder;
 
 import java.util.Date;
@@ -69,5 +70,13 @@ public class Goal {
 
     public boolean sameId(Long id) {
         return this.id.equals(id);
+    }
+
+    public void changeGoalForce(GoalRequestDto goalRequestDto) {
+        this.title = goalRequestDto.getTitle();
+        this.description = goalRequestDto.getDescription();
+        this.category = goalRequestDto.getCategory();
+        this.deadline = goalRequestDto.getDeadline();
+        this.startedAt = goalRequestDto.getStartedAt();
     }
 }
