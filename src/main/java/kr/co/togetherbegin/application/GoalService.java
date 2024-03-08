@@ -37,4 +37,12 @@ public class GoalService {
 
         return goalResponseDto;
     }
+
+    public GoalResponseDto findById(Long goalId) {
+        Goal goal = goalRepository.findById(goalId);
+
+        GoalResponseDto goalResponseDto = GoalResponseDto.toDto(goal);
+
+        return goalResponseDto;
+    }
 }

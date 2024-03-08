@@ -1,5 +1,6 @@
 package kr.co.togetherbegin.infrastructure;
 
+import kr.co.togetherbegin.domain.exception.EntityNotFoundException;
 import kr.co.togetherbegin.domain.goal.Goal;
 import kr.co.togetherbegin.domain.goal.GoalRepository;
 import kr.co.togetherbegin.presentation.dto.GoalRequestDto;
@@ -30,5 +31,13 @@ public class ListGoalRepository implements GoalRepository {
         return goals.stream()
                 .filter(goal -> category == null || goal.sameCategory(category))
                 .toList();
+    }
+
+    @Override
+    public Goal findById(Long id) {
+        return goals.stream()
+                .filter(goal -> goal.sameId(id))
+                .findFirst()
+                .orElseThrow(() -> new EntityNotFoundException("목표를 찾지 못했습니다."));
     }
 }

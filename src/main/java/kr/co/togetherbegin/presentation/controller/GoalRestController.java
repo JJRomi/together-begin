@@ -38,8 +38,12 @@ public class GoalRestController {
     }
 
     @RequestMapping(value = "/api/v1/goals/{goalId}", method = RequestMethod.GET)
-    public ResponseEntity<?> getGoalById() {
-        return ResponseEntity.ok(null);
+    public ResponseEntity<GoalResponseDto> getGoalById(
+            @PathVariable Long goalId
+    ) {
+        GoalResponseDto goalResponseDto = goalService.findById(goalId);
+
+        return ResponseEntity.ok(goalResponseDto);
     }
 
     @RequestMapping(value = "/api/v1/goals/{goalId}", method = RequestMethod.PATCH)

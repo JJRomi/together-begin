@@ -66,4 +66,8 @@ public class Goal {
     public boolean sameCategory(String category) {
         return this.category.equals(category);
     }
+
+    public boolean sameId(Long id) {
+        return this.id.equals(id);
+    }
 }
