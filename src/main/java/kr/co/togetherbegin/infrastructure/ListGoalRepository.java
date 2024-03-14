@@ -18,7 +18,7 @@ public class ListGoalRepository implements GoalRepository {
     @Override
     public Goal add(Goal goal) {
         goal.setId(sequence.getAndAdd(1L));
-        // TODO :: 디비에 입력 부분 추가
+        goal.checkDeadline();
         goals.add(goal);
 
         return goal;

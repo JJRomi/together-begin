@@ -1,17 +1,24 @@
 package kr.co.togetherbegin.presentation.dto;
 
 import kr.co.togetherbegin.domain.goal.Goal;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
+
+import static java.time.LocalDate.*;
 
 public class GoalRequestDto {
     private String title;
     private String description;
     private String category;
-    private String deadline;
-    private String startedAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date deadline;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date startedAt;
 
-    public GoalRequestDto(String title, String description, String category, String  deadline, String startedAt) {
+    public GoalRequestDto(String title, String description, String category, Date  deadline, Date startedAt) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -40,12 +47,14 @@ public class GoalRequestDto {
         return category;
     }
 
-    public String getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public String  getStartedAt() {
+    public Date  getStartedAt() {
         return startedAt;
     }
+
+
 
 }
