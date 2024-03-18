@@ -40,6 +40,12 @@ public class ListGoalRepository implements GoalRepository {
     }
 
     @Override
+    public boolean existsById(Long id) {
+        return goals.stream()
+                .anyMatch(goal -> goal.sameId(id));
+    }
+
+    @Override
     public void delete(Goal goal) {
         goals.remove(goal);
     }

@@ -10,5 +10,7 @@ public interface GoalRepository {
 
     Goal findById(Long goalId);
 
+    boolean existsById(Long goalId);
+
     void delete(Goal goal);
 }

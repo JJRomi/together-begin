@@ -3,11 +3,8 @@ package kr.co.togetherbegin.presentation.dto;
 import kr.co.togetherbegin.domain.goal.Goal;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.Date;
 
-import static java.time.LocalDate.*;
 
 public class GoalRequestDto {
     private String title;
