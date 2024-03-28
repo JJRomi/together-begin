@@ -1,5 +1,6 @@
 package kr.co.togetherbegin.domain.comment;
 
+import jakarta.persistence.Column;
 import kr.co.togetherbegin.domain.exception.PastDeadlineException;
 import kr.co.togetherbegin.presentation.dto.CommentRequestDto;
 import kr.co.togetherbegin.presentation.dto.GoalRequestDto;
@@ -13,9 +14,12 @@ import java.util.Date;
 @Builder
 public class Comment {
     private Long id;
+    @Column(name = "goal_id")
     private Long goalId;
     private String comment;
+    @Column(name = "created_at")
     private Date createdAt;
+    @Column(name = "updated_at")
     private Date updatedAt;
 
     public Comment(Long id, Long goalId, String comment, Date createdAt, Date updatedAt) {

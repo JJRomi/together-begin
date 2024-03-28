@@ -1,5 +1,6 @@
 package kr.co.togetherbegin.domain.goal;
 
+import jakarta.persistence.*;
 import kr.co.togetherbegin.domain.exception.PastDeadlineException;
 import kr.co.togetherbegin.presentation.dto.GoalRequestDto;
 import lombok.Builder;
@@ -12,16 +13,22 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Builder
+@Entity
 public class Goal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "started_at")
     private Date  startedAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date  deadline;
     private String category;
+    @Column(name = "created_at")
     private Date createdAt;
+    @Column(name = "updated_at")
     private Date updatedAt;
 
     public Goal(Long id, String title, String description, Date  startedAt, Date  deadline, String category, Date createdAt, Date updatedAt) {

@@ -1,4 +1,4 @@
-package kr.co.togetherbegin;
+package kr.co.togetherbegin.presentation.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
